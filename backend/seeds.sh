@@ -1,3 +1,6 @@
 #!/bin/sh
 
-yarn seeds
+echo "What is you name"
+read PERSON
+
+echo "My name is $PERSON"

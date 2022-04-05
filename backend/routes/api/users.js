@@ -72,8 +72,8 @@ router.post("/users/login", function(req, res, next) {
 });
 
 router.post("/users", function(req, res, next) {
+  console.log("Body",req.body)
   var user = new User();
-
   user.username = req.body.user.username;
   user.email = req.body.user.email;
   user.setPassword(req.body.user.password);
