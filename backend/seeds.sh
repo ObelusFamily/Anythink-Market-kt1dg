@@ -1,6 +1,6 @@
 #!/bin/sh
+echo "Hello"
 
-echo "What is you name"
-read PERSON
+mongo $MONGODB_URI ./seed.js
 
-echo "My name is $PERSON"
+echo "World"
