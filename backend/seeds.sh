@@ -1,3 +1,6 @@
 #!/bin/sh
+echo "Hello"
 
-yarn seeds
+mongo $MONGODB_URI ./seeds.js
+
+echo "World"
