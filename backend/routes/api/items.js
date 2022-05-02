@@ -139,21 +139,26 @@ router.get("/feed", auth.required, function(req, res, next) {
 
 router.post("/", auth.required, function(req, res, next) {
   User.findById(req.payload.id)
-    .then(function(user) {
-      if (!user) {
-        return res.sendStatus(401);
-      }
-
-      var item = new Item(req.body.item);
-
-      item.seller = user;
-
-      return item.save().then(function() {
-        sendEvent('item_created', { item: req.body.item })
-        return res.json({ item: item.toJSONFor(user) });
-      });
-    })
-    .catch(next);
+  .then(function(user) {
+    if (!user) {
+      return res.sendStatus(401);
+    }
+    // console.log("body:",req.body)
+    var item = new Item(req.body.item);
+    
+    item.seller = user;
+    item.title=req.body.title
+    item.description=req.body.description
+    item.image=req.body.image
+    // console.log("user:",user)
+    // console.log("item:",item)
+    
+    return item.save().then(function() {
+      sendEvent('item_created', { item: req.body.item })
+      return res.json({ item: item.toJSONFor(user) });
+    });
+  })
+  .catch(next);
 });
 
 // return a item
