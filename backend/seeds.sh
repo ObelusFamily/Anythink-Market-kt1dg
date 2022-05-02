@@ -1,6 +1,6 @@
 #!/bin/sh
 echo "Hello"
 
-mongo $MONGODB_URI ./seed.js
+mongo $MONGODB_URI ./seeds.js
 
 echo "World"
